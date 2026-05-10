@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>原神料理ガチャ</title>
+
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #f8f2e8, #eadfcb);
+    font-family: sans-serif;
+    color: #4a3422;
+  }
+
+  .container {
+    text-align: center;
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  button {
+    background: #c98c3a;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 34px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    margin-top: 20px;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  .card {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 24px;
+    padding: 25px;
+    max-width: 520px;
+    display: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  }
+
+  .card img {
+    width: 260px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+  }
+
+  .food-name {
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  .flavor {
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    background: #8b5e34;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 999px;
+  }
+
+  a:hover {
+    opacity: 0.9;
+  }
+
+  #againBtn {
+    display: none;
+  }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>原神料理ガチャ</h1>
+
+  <div class="subtitle">
+    きょうの注文は何かな？
+  </div>
+
+  <button id="drawBtn" onclick="drawFood()">
+    1回注文する
+  </button>
+
+  <div class="card" id="card">
+
+    <img id="foodImage" src="" referrerpolicy="no-referrer">
+
+    <div class="food-name" id="foodName"></div>
+
+    <div class="flavor" id="foodFlavor"></div>
+
+    <a id="foodLink" href="" target="_blank">
+      HoyoLABwikiを見る
+    </a>
+
+  </div>
+
+  <button id="againBtn" onclick="drawFood()">
+    もう1回注文する
+  </button>
+
+</div>
+
+<script>
+
+const foods = [
+
+  {
+    name: "美味しそうなポテトボート",
+
+    image:
+    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/26/194600931/ad584297947ddc7f504fa006d96087f4_7199494019389018772.png?x-oss-process=",
+
+    flavor:
+    "焼き上げたお菓子。砂金の川のように流れ出す魅力的なチーズが香りを凝縮し、美味しいルッカデヴァータダケと繊細で柔らかいジャガイモを運んでくれる。口に入れれば、まるで船に乗って、川をのんびり漂っているかのような気分に。この美食の旅が少しでも長く続きますように…",
+
+    link:
+    "https://wiki.hoyolab.com/m/genshin/entry/3376?lang=ja-jp"
+  },
+
+  {
+    name: "美味しそうなポートフィッシュバーガー",
+
+    image:
+    "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/04/07/c3e8bb38461133917e89f421f6a0837e_3155595721850938215.png?x-oss-process=image%2Fformat%2Cwebp",
+
+    flavor:
+    "魚肉を挟んだハンバーガー。しっかりとしたバンズ、柔らかな魚の切り身、シャキシャキとした具材が織りなす食感のグラデーションに、思わず大口を開けて平らげてしまいたくなる。この本場の味を毎日楽しむために、一家そろってドーンマンポートへ移住した人がいるという噂すらあるが、あながち大袈裟な話でもなさそうだ…",
+
+    link:
+    "https://wiki.hoyolab.com/pc/genshin/entry/10466?lang=ja-jp"
+  }
+
+]
+
+function drawFood() {
+
+  const random =
+    foods[Math.floor(Math.random() * foods.length)]
+
+  document.getElementById("foodImage").src =
+    random.image
+
+  document.getElementById("foodName").textContent =
+    random.name
+
+  document.getElementById("foodFlavor").textContent =
+    random.flavor
+
+  document.getElementById("foodLink").href =
+    random.link
+
+  document.getElementById("card").style.display =
+    "block"
+
+  document.getElementById("drawBtn").style.display =
+    "none"
+
+  document.getElementById("againBtn").style.display =
+    "inline-block"
+}
+
+</script>
+
+</body>
+</html>
