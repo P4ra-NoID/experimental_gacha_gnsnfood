@@ -2,12 +2,11 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>原神料理ガチャ</title>
 
 <style>
 
-/* 全体レイアウト */
 body {
   margin: 0;
   min-height: 100vh;
@@ -16,33 +15,31 @@ body {
   background: linear-gradient(to bottom, #f8f2e8, #eadfcb);
   font-family: sans-serif;
   color: #4a3422;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
-/* メインエリア中央寄せ */
 .container {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  padding: 20px;
   text-align: center;
+  padding: 20px;
+  transform: translateZ(0);
 }
 
-/* タイトル */
 h1 {
   font-size: 42px;
   margin-bottom: 10px;
 }
 
-/* サブタイトル */
 .subtitle {
   font-size: 20px;
   margin-bottom: 20px;
 }
 
-/* ボタン */
 button {
   background: #c98c3a;
   color: white;
@@ -59,7 +56,7 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* 説明ボックス */
+/* 説明ボックス（空白完全除去版） */
 .note {
   margin-top: 15px;
   background: #ffffff;
@@ -89,20 +86,17 @@ button:hover {
   margin-bottom: 20px;
 }
 
-/* 名前 */
 .food-name {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* テキスト */
 .flavor {
   line-height: 1.8;
   margin-bottom: 15px;
 }
 
-/* リンクボタン */
 a {
   display: inline-block;
   text-decoration: none;
@@ -112,12 +106,11 @@ a {
   border-radius: 999px;
 }
 
-/* 非表示系 */
 #againBtn, #backBtn {
   display: none;
 }
 
-/* クレジット（フッター風） */
+/* クレジット */
 .credit {
   text-align: center;
   font-size: 12px;
@@ -151,17 +144,13 @@ a {
     1回注文する
   </button>
 
-  <!-- タイトル説明 -->
+  <!-- ★空白完全修正版（インデント削除済み） -->
   <div class="note">
-    食い意地から生まれたサイトです<br>
-    あまり難しく考えず、気軽に<br>
-    ポチポチしてください✌️<br><br>
-    ※現在排出されるのは美味しい<br>
-    料理のみで、オリジナル料理は提供<br>
-    されません！
+食い意地から生まれたサイトです<br>
+あまり難しく考えず、気軽にポチポチしてください✌️<br>
+※現在排出されるのは美味しい料理のみで、オリジナル料理は提供されません！
   </div>
 
-  <!-- カード -->
   <div class="card" id="card">
 
     <img id="foodImage" src="" referrerpolicy="no-referrer">
@@ -186,7 +175,6 @@ a {
 
 </div>
 
-<!-- クレジット（常時下） -->
 <div class="credit">
   製作者：春もち【観葉植物】<br>
   Twitter：
