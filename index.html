@@ -7,7 +7,6 @@
 
 <style>
 
-/* 全体 */
 body {
   margin: 0;
   min-height: 100vh;
@@ -20,31 +19,28 @@ body {
   touch-action: manipulation;
 }
 
-/* メイン */
+/* ★ここが重要：ちゃんと中央寄せ復活 */
 .container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* ←ここがポイント（中央やめ） */
+  justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 40px 20px 20px; /* ←上に余白でバランス */
+  padding: 20px;
   transform: translateZ(0);
 }
 
-/* タイトル */
 h1 {
   font-size: 42px;
   margin-bottom: 10px;
 }
 
-/* サブ */
 .subtitle {
   font-size: 20px;
   margin-bottom: 20px;
 }
 
-/* ボタン */
 button {
   background: #c98c3a;
   color: white;
@@ -61,7 +57,7 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* 説明 */
+/* コメントボックス（改行指定どおり） */
 .note {
   margin-top: 15px;
   background: #ffffff;
@@ -72,9 +68,9 @@ button:hover {
   line-height: 1.6;
   color: #4a3422;
   max-width: 320px;
+  white-space: pre-line; /* ←改行をそのまま反映 */
 }
 
-/* カード */
 .card {
   margin-top: 20px;
   background: rgba(255,255,255,0.9);
@@ -91,20 +87,17 @@ button:hover {
   margin-bottom: 20px;
 }
 
-/* 名前 */
 .food-name {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* テキスト */
 .flavor {
   line-height: 1.8;
   margin-bottom: 15px;
 }
 
-/* リンク */
 a {
   display: inline-block;
   text-decoration: none;
@@ -114,17 +107,16 @@ a {
   border-radius: 999px;
 }
 
-/* 非表示 */
 #againBtn, #backBtn {
   display: none;
 }
 
-/* クレジット（下に自然配置） */
+/* クレジット（コメント直下） */
 .credit {
   text-align: center;
   font-size: 12px;
   opacity: 0.7;
-  padding: 15px 0 20px;
+  padding: 10px 0 20px;
 }
 
 .credit a {
@@ -153,11 +145,12 @@ a {
     1回注文する
   </button>
 
+  <!-- ★改行完全指定版 -->
   <div class="note">
-    食い意地から生まれたサイトです<br>
-    あまり難しく考えず、気軽にポチポチしてください✌️<br>
-    ※現在排出されるのは美味しそうな料理のみで、<br>
-    オリジナル料理は提供されません！
+食い意地から生まれたサイトです！<br>
+あまり難しく考えず、気軽にポチポチしてください✌️<br>
+※現在排出されるのは美味しい料理のみで、<br>
+オリジナル料理は提供されません！
   </div>
 
   <div class="card" id="card">
@@ -184,7 +177,7 @@ a {
 
 </div>
 
-<!-- クレジット -->
+<!-- ★クレジットはコメント直下 -->
 <div class="credit">
   製作者：春もち【観葉植物】<br>
   Twitter：
