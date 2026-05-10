@@ -34,7 +34,7 @@ h1 {
 
 .subtitle {
   font-size: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 button {
@@ -51,6 +51,19 @@ button {
 
 button:hover {
   transform: scale(1.05);
+}
+
+/* 説明ボックス */
+.note {
+  margin-top: 15px;
+  background: #ffffff;
+  border: 2px solid #eee;
+  border-radius: 16px;
+  padding: 15px 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #4a3422;
+  max-width: 320px;
 }
 
 .card {
@@ -93,22 +106,6 @@ a {
   display: none;
 }
 
-/* クレジット */
-.credit {
-  margin-top: 40px;
-  font-size: 12px;
-  opacity: 0.6;
-}
-
-.credit a {
-  color: #BB88EE;
-  text-decoration: none;
-}
-
-.credit a:hover {
-  opacity: 0.85;
-}
-
 </style>
 </head>
 
@@ -125,6 +122,17 @@ a {
   <button id="drawBtn" onclick="drawFood()">
     1回注文する
   </button>
+
+  <!-- 説明ボックス -->
+  <div class="note">
+    食い意地から生まれたサイトです<br>
+    あまり難しく考えず、気軽に<br>
+    ポチポチしてください✌️<br><br>
+
+    今現在排出されるのは美味しい<br>
+    料理のみで、オリジナル料理は提供<br>
+    されません！
+  </div>
 
   <div class="card" id="card">
 
@@ -147,15 +155,6 @@ a {
   <button id="backBtn" onclick="backToTitle()">
     タイトルにもどる
   </button>
-
-  <!-- クレジット -->
-  <div class="credit">
-    製作者:春もち【観葉植物の人】<br>
-    Twitter：
-    <a href="https://twitter.com/ech_oni3" target="_blank">
-      @ech_oni3
-    </a>
-  </div>
 
 </div>
 
