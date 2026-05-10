@@ -2,127 +2,96 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>原神料理ガチャ</title>
- 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to bottom, #f8f2e8, #eadfcb);
-    font-family: sans-serif;
-    color: #4a3422;
-  }
 
-  .container {
-    text-align: center;
-    padding: 30px;
-  }
-
-  h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
-  }
-
-  .subtitle {
-    font-size: 20px;
-    margin-bottom: 30px;
-  }
-
-  button {
-    background: #c98c3a;
-    color: white;
-    border: none;
-    border-radius: 999px;
-    padding: 14px 34px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.2s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    margin-top: 20px;
-  }
-
-  button:hover {
-    transform: scale(1.05);
-  }
-
-  .card {
-    margin-top: 20px;
-    background: rgba(255,255,255,0.9);
-    border-radius: 24px;
-    padding: 25px;
-    max-width: 520px;
-    display: none;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  }
-
-  .card img {
-    width: 260px;
-    border-radius: 18px;
-    margin-bottom: 20px;
-  }
-
-  .food-name {
-    font-size: 28px;
-    margin-bottom: 15px;
-    font-weight: bold;
-  }
-
-  .flavor {
-    line-height: 1.8;
-    margin-bottom: 20px;
-  }
-
-  a {
-    display: inline-block;
-    text-decoration: none;
-    background: #8b5e34;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 999px;
-  }
-
-  a:hover {
-    opacity: 0.9;
-  }
-
-  #againBtn {
-    display: none;
-  }
-
-  body {
-  padding: 20px;
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #f8f2e8, #eadfcb);
+  font-family: sans-serif;
+  color: #4a3422;
+  text-align: center;
 }
 
-.card {
-  max-width: 90%;
-  width: 100%;
-}
-
-.card img {
-  width: 100%;
-  max-width: 320px;
-}
-
- .container {
+.container {
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.card {
-  margin-left: auto;
-  margin-right: auto;
+h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
 }
 
-body {
-  text-align: center;
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 30px;
 }
- 
+
+button {
+  background: #c98c3a;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 34px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  margin-top: 20px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 24px;
+  padding: 25px;
+  max-width: 90%;
+  display: none;
+}
+
+.card img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 18px;
+  margin-bottom: 20px;
+}
+
+.food-name {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.flavor {
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  background: #8b5e34;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 999px;
+}
+
+#againBtn, #backBtn {
+  display: none;
+}
+
 </style>
 </head>
 
@@ -158,10 +127,10 @@ body {
     もう1回注文する
   </button>
 
- <button id="backBtn" onclick="backToTitle()">
-  タイトルにもどる
-</button>
- 
+  <button id="backBtn" onclick="backToTitle()">
+    タイトルにもどる
+  </button>
+
 </div>
 
 <script>
@@ -170,57 +139,41 @@ const foods = [
 
   {
     name: "美味しそうなポテトボート",
-
-    image:
-    "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/26/194600931/ad584297947ddc7f504fa006d96087f4_7199494019389018772.png?x-oss-process=",
-
-    flavor:
-    "焼き上げたお菓子。砂金の川のように流れ出す魅力的なチーズが香りを凝縮し、美味しいルッカデヴァータダケと繊細で柔らかいジャガイモを運んでくれる。口に入れれば、まるで船に乗って、川をのんびり漂っているかのような気分に。この美食の旅が少しでも長く続きますように…",
-
-    link:
-    "https://wiki.hoyolab.com/m/genshin/entry/3376?lang=ja-jp"
+    image: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/26/194600931/ad584297947ddc7f504fa006d96087f4_7199494019389018772.png?x-oss-process=",
+    flavor: "焼き上げたお菓子。砂金の川のように流れ出す魅力的なチーズが香りを凝縮し、美味しいルッカデヴァータダケと繊細で柔らかいジャガイモを運んでくれる。口に入れれば、まるで船に乗って、川をのんびり漂っているかのような気分に。この美食の旅が少しでも長く続きますように…",
+    link: "https://wiki.hoyolab.com/m/genshin/entry/3376?lang=ja-jp"
   },
 
   {
     name: "美味しそうなポートフィッシュバーガー",
-
-    image:
-    "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/04/07/c3e8bb38461133917e89f421f6a0837e_3155595721850938215.png?x-oss-process=image%2Fformat%2Cwebp",
-
-    flavor:
-    "魚肉を挟んだハンバーガー。しっかりとしたバンズ、柔らかな魚の切り身、シャキシャキとした具材が織りなす食感のグラデーションに、思わず大口を開けて平らげてしまいたくなる。この本場の味を毎日楽しむために、一家そろってドーンマンポートへ移住した人がいるという噂すらあるが、あながち大袈裟な話でもなさそうだ…",
-
-    link:
-    "https://wiki.hoyolab.com/pc/genshin/entry/10466?lang=ja-jp"
+    image: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/04/07/c3e8bb38461133917e89f421f6a0837e_3155595721850938215.png?x-oss-process=image%2Fformat%2Cwebp",
+    flavor: "魚肉を挟んだハンバーガー。しっかりとしたバンズ、柔らかな魚の切り身、シャキシャキとした具材が織りなす食感のグラデーションに、思わず大口を開けて平らげてしまいたくなる。この本場の味を毎日楽しむために、一家そろってドーンマンポートへ移住した人がいるという噂すらあるが、あながち大袈裟な話でもなさそうだ…",
+    link: "https://wiki.hoyolab.com/pc/genshin/entry/10466?lang=ja-jp"
   }
 
 ]
 
 function drawFood() {
 
-  const random =
-    foods[Math.floor(Math.random() * foods.length)]
+  const food = foods[Math.floor(Math.random() * foods.length)]
 
-  document.getElementById("foodImage").src =
-    random.image
+  document.getElementById("foodImage").src = food.image
+  document.getElementById("foodName").textContent = food.name
+  document.getElementById("foodFlavor").textContent = food.flavor
+  document.getElementById("foodLink").href = food.link
 
-  document.getElementById("foodName").textContent =
-    random.name
+  document.getElementById("card").style.display = "block"
+  document.getElementById("drawBtn").style.display = "none"
+  document.getElementById("againBtn").style.display = "inline-block"
+  document.getElementById("backBtn").style.display = "inline-block"
+}
 
-  document.getElementById("foodFlavor").textContent =
-    random.flavor
+function backToTitle() {
 
-  document.getElementById("foodLink").href =
-    random.link
-
-  document.getElementById("card").style.display =
-    "block"
-
-  document.getElementById("drawBtn").style.display =
-    "none"
-
-  document.getElementById("againBtn").style.display =
-    "inline-block"
+  document.getElementById("card").style.display = "none"
+  document.getElementById("drawBtn").style.display = "inline-block"
+  document.getElementById("againBtn").style.display = "none"
+  document.getElementById("backBtn").style.display = "none"
 }
 
 </script>
