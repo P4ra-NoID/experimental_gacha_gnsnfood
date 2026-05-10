@@ -19,7 +19,6 @@ body {
   touch-action: manipulation;
 }
 
-/* ★ここが重要：ちゃんと中央寄せ復活 */
 .container {
   flex: 1;
   display: flex;
@@ -28,7 +27,6 @@ body {
   align-items: center;
   text-align: center;
   padding: 20px;
-  transform: translateZ(0);
 }
 
 h1 {
@@ -57,7 +55,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* コメントボックス（改行指定どおり） */
 .note {
   margin-top: 15px;
   background: #ffffff;
@@ -68,7 +65,7 @@ button:hover {
   line-height: 1.6;
   color: #4a3422;
   max-width: 320px;
-  white-space: pre-line; /* ←改行をそのまま反映 */
+  white-space: pre-line;
 }
 
 .card {
@@ -111,7 +108,6 @@ a {
   display: none;
 }
 
-/* クレジット（コメント直下） */
 .credit {
   text-align: center;
   font-size: 12px;
@@ -122,10 +118,6 @@ a {
 .credit a {
   color: #BB88EE;
   text-decoration: none;
-}
-
-.credit a:hover {
-  opacity: 0.9;
 }
 
 </style>
@@ -145,10 +137,9 @@ a {
     1回注文する
   </button>
 
-  <!-- ★改行完全指定版 -->
   <div class="note">
 食い意地から生まれたサイトです！
-初心者なのでUIが終わっています。許して    
+初心者なのでUIが終わっています。許して  
 あまり難しく考えず、気軽にポチポチしてください✌️
 ※現在排出されるのは美味しい料理のみで、
 オリジナル料理は提供されません！
@@ -178,79 +169,49 @@ a {
 
 </div>
 
-<!-- ★クレジットはコメント直下 -->
 <div class="credit">
   不具合報告など↓<br>
   製作者：春もち【観葉植物】<br>
   Twitter：
-  <a href="https://twitter.com/ech_oni3" target="_blank">
-    @ech_oni3
-  </a>
+  <a href="https://twitter.com/ech_oni3" target="_blank">@ech_oni3</a>
 </div>
 
 <script>
 
+let lastIndex = -1;
+
 const foods = [
-  /*モンド*/
-{
-  name:"美味しそうなアップルシュトゥルーデル",
-  image:"https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/09/06/75248538/f1a8b5eb086db5004a298eedeb3f9f41_6150476580846727733.png?x-oss-process=image%2Fformat%2Cwebp",
-  flavor:"リンゴをベースにした伝統的なスイーツ。甘いリンゴの香りが鼻から抜けると、暖炉の傍にいるかのような幸福感に包まれる。一口目を飲み込まないうちから、まるで誰かに操られるかのように、フォークは次の一切れへと伸びていく。",
-  link:"https://wiki.hoyolab.com/pc/genshin/entry/6695?lang=ja-jp"
-},
-
-{
-  name:"美味しそうな「お肉ツミツミ」",
-  image:"https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/11/194600931/7f32723cfabd2b75a1a9ae5189579b53_8483101986751071701.png?x-oss-process=image%2Fformat%2Cwebp",
-  flavor:"たくさんの材料を使った肉料理。食材を積み重ねて目でも楽しめる。適切な割合になっているので、どの層の組合せを食べても食べ飽きない。あぁ、もっと高く積み重ねてみたいなぁ。",
-  link:"https://wiki.hoyolab.com/pc/genshin/entry/1370?lang=ja-jp"
-},
-  
-  /*スメール*/
-  
   {
-    name: "美味しそうなポテトボート",
-    image: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/26/194600931/ad584297947ddc7f504fa006d96087f4_7199494019389018772.png",
-    flavor: "焼き上げたお菓子。砂金の川のように流れ出す魅力的なチーズが香りを凝縮し、美味しいルッカデヴァータダケと繊細で柔らかいジャガイモを運んでくれる。口に入れれば、まるで船に乗って、川をのんびり漂っているかのような気分に。この美食の旅が少しでも長く続きますように…",
-    link: "https://wiki.hoyolab.com/m/genshin/entry/3376?lang=ja-jp"
+    name:"美味しそうなアップルシュトゥルーデル",
+    image:"https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/09/06/75248538/f1a8b5eb086db5004a298eedeb3f9f41_6150476580846727733.png?x-oss-process=image%2Fformat%2Cwebp",
+    flavor:"リンゴをベースにした伝統的なスイーツ。甘いリンゴの香りが鼻から抜けると、暖炉の傍にいるかのような幸福感に包まれる。",
+    link:"https://wiki.hoyolab.com/pc/genshin/entry/6695?lang=ja-jp"
   },
-
-  
   {
-    name:"美味しそうなマサラチーズボール",
-    image:"https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/19/194600931/c7e5579c25ad39d4be1c2b1abf809206_5750200935067516739.png?x-oss-process=image%2Fformat%2Cwebp",
-    flavor:"パイモンが目を瞑り、長いこと思い悩んだ末に改良したアランナラ料理だが——実はスメールで古くから流行していた調理法。独自の香料の加え方により、素材そのものの味が引き出されている。このおかげで味覚が少し刺激され、味がより豊かになった…チーズボールの外側のカリッとした食感と内側のやわらかい食感が、熱々のポテトの食感と補い合っている。",
-    link:"https://wiki.hoyolab.com/pc/genshin/entry/2777?lang=ja-jp"
+    name:"美味しそうなポテトボート",
+    image:"https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/26/194600931/ad584297947ddc7f504fa006d96087f4_7199494019389018772.png",
+    flavor:"チーズとジャガイモのやさしい味わい。川を漂うような気分に。",
+    link:"https://wiki.hoyolab.com/m/genshin/entry/3376?lang=ja-jp"
   },
-  
-/*フォンテーヌ*/
-  
   {
-    name: "美味しそうなポートフィッシュバーガー",
-    image: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/04/07/c3e8bb38461133917e89f421f6a0837e_3155595721850938215.png?x-oss-process=image%2Fformat%2Cwebp",
-    flavor: "魚肉を挟んだハンバーガー。しっかりとしたバンズ、柔らかな魚の切り身、シャキシャキとした具材が織りなす食感のグラデーションに、思わず大口を開けて平らげてしまいたくなる。この本場の味を毎日楽しむために、一家そろってドーンマンポートへ移住した人がいるという噂すらあるが、あながち大袈裟な話でもなさそうだ…",
-    link: "https://wiki.hoyolab.com/pc/genshin/entry/10466?lang=ja-jp"
-  },
-
-  {
-    name:"美味しそうなポート風トリップ",
-    image:"https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/08/75248538/641f92beb2516083c521625ad863bbad_8070765725830688129.png?x-oss-process=image%2Fformat%2Cwebp",
-    flavor:"内臓を主な材料とした料理。大きくてホロホロのハチノスは、フルーティーな香りを放っている。意表を突く斬新さはないが、芳醇な伝統の風味に満ちる。食べ始めたら、もうフォークが止まらない！",
-    link:"https://wiki.hoyolab.com/pc/genshin/entry/4439?lang=ja-jp"
-  },
-
-  {
-    name:"美味しそうなミートソースラザニア",
-    image:"https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/24/75248538/9ace902ff51ce7bc990ed82a409ac8f2_7754634416148769966.png?x-oss-process=image%2Fformat%2Cwebp",
-    flavor:"焼き上げたパスタ料理。鍋と火の歌の中で精練されたミートソースが、ラザニア用パスタとチーズで築き上げられた王座で王冠をその手に。口に入れた瞬間、言葉では言い表せない程の美味しさに脳が占領され、今日を「ミートソースラザニアの日」と定めたくなる。",
-    link:"https://wiki.hoyolab.com/pc/genshin/entry/4177?lang=ja-jp"
+    name:"美味しそうなポートフィッシュバーガー",
+    image:"https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/04/07/c3e8bb38461133917e89f421f6a0837e_3155595721850938215.png?x-oss-process=image%2Fformat%2Cwebp",
+    flavor:"魚とバンズの食感が楽しいバーガー。",
+    link:"https://wiki.hoyolab.com/pc/genshin/entry/10466?lang=ja-jp"
   }
-  
 ];
 
 function drawFood() {
 
-  const food = foods[Math.floor(Math.random() * foods.length)];
+  let index;
+
+  do {
+    index = Math.floor(Math.random() * foods.length);
+  } while (index === lastIndex);
+
+  lastIndex = index;
+
+  const food = foods[index];
 
   document.getElementById("foodImage").src = food.image;
   document.getElementById("foodName").textContent = food.name;
