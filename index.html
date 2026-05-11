@@ -317,10 +317,14 @@ const foods = [
 
 function drawFood() {
 
+  if (soundEnabled && titleBgm.paused) {
+    titleBgm.play().catch(() => {});
+  }
+
   if (soundEnabled) {
     const sfx = document.getElementById("sound32").cloneNode();
 
-sfx.play().catch(() => {});
+    sfx.play().catch(() => {});
   }
 
   let index;
