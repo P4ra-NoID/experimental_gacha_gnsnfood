@@ -208,7 +208,7 @@ a {
 
 <audio id="sound32" src="click32.mp3"></audio>
 <audio id="sound48" src="click48.mp3"></audio>
-<audio id="titleBgm" src="nc444106_Town.mp3"></audio>
+<audio id="titleBgm" src="nc444106_Town.mp3" loop></audio>
 
 <script>
 
@@ -220,10 +220,7 @@ titleBgm.volume = 0.18;
 
 titleBgm.addEventListener("timeupdate", () => {
 
-  if (titleBgm.currentTime >= 46) {
-    titleBgm.currentTime = 0;
-    titleBgm.play();
-  }
+
 
 });
 
@@ -312,6 +309,14 @@ const foods = [
     flavor:"焼き上げたパスタ料理。鍋と火の歌の中で精練されたミートソースが、ラザニア用パスタとチーズで築き上げられた王座で王冠をその手に。口に入れた瞬間、言葉では言い表せない程の美味しさに脳が占領され、今日を「ミートソースラザニアの日」と定めたくなる。",  
     link:"https://wiki.hoyolab.com/pc/genshin/entry/4177?lang=ja-jp"  
   }  
+
+  /*イベントやメール等配布のやつ*/
+  {
+  name:"美味しそうな獣肉シチュー",
+  image:"https://wiki.hoyolab.com/m/genshin/entry/1435",
+  flavor:"煮込んだ料理。濃厚なスープと旨味たっぷりの獣肉が香ばしい香りを漂わせる。野菜は十分に煮込まれ、豊かな味をもたらした…このような美味い一品は、湯気が立ってもついつい食べたくなってしまい、あっという間に飲み干してしまう…そうだ、スープにパンをつけて食べるのも悪くないかも？",
+  link:"https://wiki.hoyolab.com/pc/genshin/entry/1435?lang=ja-jp"
+},
   
 ];
 
