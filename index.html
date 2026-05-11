@@ -208,11 +208,24 @@ a {
 
 <audio id="sound32" src="click32.mp3"></audio>
 <audio id="sound48" src="click48.mp3"></audio>
+<audio id="titleBgm" src="nc444106_Town.mp3"></audio>
 
 <script>
 
 let lastIndex = -1;
 let soundEnabled = true;
+const titleBgm = document.getElementById("titleBgm");
+
+titleBgm.volume = 0.18;
+
+titleBgm.addEventListener("timeupdate", () => {
+
+  if (titleBgm.currentTime >= 50) {
+    titleBgm.currentTime = 0;
+    titleBgm.play();
+  }
+
+});
 
 const foods = [
  /*モンド*/ 
@@ -303,6 +316,12 @@ const foods = [
 ];
 
 function drawFood() {
+
+  function drawFood() {
+
+  if (soundEnabled && titleBgm.paused) {
+    titleBgm.play().catch(() => {});
+  }
 
   if (soundEnabled) {
     const sfx = document.getElementById("sound32").cloneNode();
