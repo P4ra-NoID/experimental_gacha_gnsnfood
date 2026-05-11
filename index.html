@@ -346,19 +346,29 @@ sfx.play().catch(() => {});
   document.querySelector(".note").style.display = "none";
 }
 
-function toggleSound() {
-
-  soundEnabled = !soundEnabled;
-
-  document.getElementById("soundToggle").textContent =
-    soundEnabled ? "🔉" : "🔇";
+function backToTitle() {
 
   if (soundEnabled) {
-    titleBgm.play().catch(() => {});
-  } else {
-    titleBgm.pause();
+    const sfx = document.getElementById("sound48").cloneNode();
+
+    sfx.play().catch(() => {});
   }
+
+  document.getElementById("card").style.display = "none";
+  document.getElementById("drawBtn").style.display = "inline-block";
+  document.getElementById("againBtn").style.display = "none";
+  document.getElementById("backBtn").style.display = "none";
+
+  document.querySelector(".note").style.display = "block";
 }
+
+function backToTitle() {
+
+  if (soundEnabled) {
+    const sfx = document.getElementById("sound48").cloneNode();
+
+    sfx.play().catch(() => {});
+  }
 
   document.getElementById("card").style.display = "none";
   document.getElementById("drawBtn").style.display = "inline-block";
@@ -374,7 +384,15 @@ function toggleSound() {
 
   document.getElementById("soundToggle").textContent =
     soundEnabled ? "🔉" : "🔇";
+
+  if (soundEnabled) {
+    titleBgm.play().catch(() => {});
+  } else {
+    titleBgm.pause();
+  }
 }
+
+
 
 </script>
 
