@@ -118,6 +118,39 @@ button:hover {
   margin-bottom: 15px;
 }
 
+/* ===== 追加：吹き出しエリア ===== */
+.speech-area {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.char-img {
+  width: 70px;
+  height: auto;
+}
+
+.bubble {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  max-width: 220px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.bubble:after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  bottom: 10px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent #fff transparent transparent;
+}
+
 a {
   display: inline-block;
   text-decoration: none;
@@ -181,6 +214,12 @@ a {
 
     <div class="food-name" id="foodName"></div>
 
+    <!-- 追加：キャラ＋吹き出し -->
+    <div class="speech-area">
+      <img class="char-img" id="charImg" src="https://raw.githubusercontent.com/P4ra-NoID/experimental_gacha_gnsnfood/main/haizen_dot.png">
+      <div class="bubble" id="bubbleText"></div>
+    </div>
+
     <div class="flavor" id="foodFlavor"></div>
 
     <a id="foodLink" href="" target="_blank">
@@ -218,14 +257,8 @@ const titleBgm = document.getElementById("titleBgm");
 
 titleBgm.volume = 0.18;
 
-titleBgm.addEventListener("timeupdate", () => {
-
-
-
-});
-
 const foods = [
- /*モンド*/ 
+  /*モンド*/ 
   
 {  
   name:"美味しそうなアップルシュトゥルーデル",  
@@ -322,16 +355,6 @@ const foods = [
 
 function drawFood() {
 
-  if (soundEnabled && titleBgm.paused) {
-    titleBgm.play().catch(() => {});
-  }
-
-  if (soundEnabled) {
-    const sfx = document.getElementById("sound32").cloneNode();
-
-    sfx.play().catch(() => {});
-  }
-
   let index;
 
   do {
@@ -344,6 +367,10 @@ function drawFood() {
 
   document.getElementById("foodImage").src = food.image;
   document.getElementById("foodName").textContent = food.name;
+
+  // 吹き出しにフレーバー入れる
+  document.getElementById("bubbleText").textContent = food.flavor;
+
   document.getElementById("foodFlavor").textContent = food.flavor;
   document.getElementById("foodLink").href = food.link;
 
@@ -356,28 +383,6 @@ function drawFood() {
 }
 
 function backToTitle() {
-
-  if (soundEnabled) {
-    const sfx = document.getElementById("sound48").cloneNode();
-
-    sfx.play().catch(() => {});
-  }
-
-  document.getElementById("card").style.display = "none";
-  document.getElementById("drawBtn").style.display = "inline-block";
-  document.getElementById("againBtn").style.display = "none";
-  document.getElementById("backBtn").style.display = "none";
-
-  document.querySelector(".note").style.display = "block";
-}
-
-function backToTitle() {
-
-  if (soundEnabled) {
-    const sfx = document.getElementById("sound48").cloneNode();
-
-    sfx.play().catch(() => {});
-  }
 
   document.getElementById("card").style.display = "none";
   document.getElementById("drawBtn").style.display = "inline-block";
@@ -400,8 +405,6 @@ function toggleSound() {
     titleBgm.pause();
   }
 }
-
-
 
 </script>
 
