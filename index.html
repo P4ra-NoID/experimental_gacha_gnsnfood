@@ -55,6 +55,22 @@ button:hover {
   transform: scale(1.05);
 }
 
+.sound-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 999;
+  padding: 0;
+}
+
 .note {
   margin-top: 15px;
   background: #ffffff;
@@ -125,6 +141,10 @@ a {
 
 <body>
 
+<button class="sound-toggle" onclick="toggleSound()" id="soundToggle">
+🔉
+</button>
+
 <div class="container">
 
   <h1>原神料理ガチャ</h1>
@@ -178,12 +198,16 @@ a {
   <a href="https://twitter.com/ech_oni3" target="_blank">@ech_oni3</a>
 </div>
 
+<audio id="sound32" src="sounds/click32.mp3"></audio>
+<audio id="sound48" src="sounds/click48.mp3"></audio>
+
 <script>
 
 let lastIndex = -1;
+let soundEnabled = true;
 
 const foods = [
-  /*モンド*/ 
+ /*モンド*/ 
   
 {  
   name:"美味しそうなアップルシュトゥルーデル",  
@@ -267,9 +291,15 @@ const foods = [
     flavor:"焼き上げたパスタ料理。鍋と火の歌の中で精練されたミートソースが、ラザニア用パスタとチーズで築き上げられた王座で王冠をその手に。口に入れた瞬間、言葉では言い表せない程の美味しさに脳が占領され、今日を「ミートソースラザニアの日」と定めたくなる。",  
     link:"https://wiki.hoyolab.com/pc/genshin/entry/4177?lang=ja-jp"  
   }  
+  
 ];
 
 function drawFood() {
+
+  if (soundEnabled) {
+    document.getElementById("sound32").currentTime = 0;
+    document.getElementById("sound32").play();
+  }
 
   let index;
 
@@ -296,12 +326,25 @@ function drawFood() {
 
 function backToTitle() {
 
+  if (soundEnabled) {
+    document.getElementById("sound48").currentTime = 0;
+    document.getElementById("sound48").play();
+  }
+
   document.getElementById("card").style.display = "none";
   document.getElementById("drawBtn").style.display = "inline-block";
   document.getElementById("againBtn").style.display = "none";
   document.getElementById("backBtn").style.display = "none";
 
   document.querySelector(".note").style.display = "block";
+}
+
+function toggleSound() {
+
+  soundEnabled = !soundEnabled;
+
+  document.getElementById("soundToggle").textContent =
+    soundEnabled ? "🔉" : "🔇";
 }
 
 </script>
